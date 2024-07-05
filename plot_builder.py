@@ -22,14 +22,14 @@ class PlotBuilder:
             self.gs = gridspec.GridSpec(2, 3)
         self.plt.subplots_adjust(left=0.01, bottom=0.01, right=0.99, top=0.99, wspace=0.05, hspace=0.25)
 
-    def create_subplot(self, row_index, col_index, index, index_type):
+    def create_subplot(self, row_index, col_index, index, index_type, index_label):
         colors = [(0, 'red'), (0.5, 'yellow'), (1, 'green')]
         custom_cmap = LinearSegmentedColormap.from_list('custom_cmap', colors, N=256)
         subplot = self.fig.add_subplot(self.gs[row_index, col_index], facecolor=(0.9, 0.9, 0.9))
         img = subplot.imshow(index, cmap=custom_cmap)
         subplot.set_xticks([])
         subplot.set_yticks([])
-        subplot.set_title(index_type)
+        subplot.set_title(f"{index_type} ({index_label})")
         
         # Create a colorbar
         cbar = self.fig.colorbar(img, ax=subplot, orientation='vertical')
