@@ -14,21 +14,21 @@ while True:
 
 blue_band = green_band = red_band = nir_band = None
 if Band.BLUE.value in selected_bands:
-    # blue_band = load_image('dataset/rededge_raw_example1/IMG_0455_1.tif')
+    blue_band = load_image('dataset/rededge_raw_example1/IMG_0455_1.tif')
     # blue_band = load_image('dataset/rededge_raw_example2/IMG_0406_1.tif')
-    blue_band = load_image('dataset/rededge_raw_example3/IMG_0666_1.tif')
+    # blue_band = load_image('dataset/rededge_raw_example3/IMG_0666_1.tif')
 if Band.GREEN.value in selected_bands:
-    # green_band = load_image('dataset/rededge_raw_example1/IMG_0455_2.tif')
+    green_band = load_image('dataset/rededge_raw_example1/IMG_0455_2.tif')
     # green_band = load_image('dataset/rededge_raw_example2/IMG_0406_2.tif')
-    green_band = load_image('dataset/rededge_raw_example3/IMG_0666_2.tif')
+    # green_band = load_image('dataset/rededge_raw_example3/IMG_0666_2.tif')
 if Band.RED.value in selected_bands:
-    # red_band = load_image('dataset/rededge_raw_example1/IMG_0455_3.tif')
+    red_band = load_image('dataset/rededge_raw_example1/IMG_0455_3.tif')
     # red_band = load_image('dataset/rededge_raw_example2/IMG_0406_3.tif')
-    red_band = load_image('dataset/rededge_raw_example3/IMG_0666_3.tif')
+    # red_band = load_image('dataset/rededge_raw_example3/IMG_0666_3.tif')
 if Band.NIR.value in selected_bands:
-    # nir_band = load_image('dataset/rededge_raw_example1/IMG_0455_4.tif')
+    nir_band = load_image('dataset/rededge_raw_example1/IMG_0455_4.tif')
     # nir_band = load_image('dataset/rededge_raw_example2/IMG_0406_4.tif')
-    nir_band = load_image('dataset/rededge_raw_example3/IMG_0666_4.tif')
+    # nir_band = load_image('dataset/rededge_raw_example3/IMG_0666_4.tif')
 
 # Plot builder & index calculators
 while True:
