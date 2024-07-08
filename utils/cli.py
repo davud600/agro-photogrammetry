@@ -41,10 +41,19 @@ def get_indices_from_user(selected_bands):
     if Band.NIR.value not in selected_bands:
         available_indices.remove(Index.NDVI.value)
         available_indices.remove(Index.IPVI.value)
-    elif Band.GREEN.value not in selected_bands or Band.BLUE.value not in selected_bands:
+        available_indices.remove(Index.SAVI.value)
+        available_indices.remove(Index.EVI.value)
+    if Band.RED.value not in selected_bands:
+        available_indices.clear()
+    if Band.GREEN.value not in selected_bands:
         available_indices.remove(Index.VARI.value)
         available_indices.remove(Index.RI.value)
         available_indices.remove(Index.BI.value)
+    if Band.BLUE.value not in selected_bands:
+        available_indices.remove(Index.VARI.value)
+        available_indices.remove(Index.RI.value)
+        available_indices.remove(Index.BI.value)
+        available_indices.remove(Index.EVI.value)
 
     print(f"{Colors.HEADER.value}Enter indices to show{Colors.ENDC.value}\n{Colors.CYAN.value}{available_indices}{Colors.ENDC.value} or {Colors.CYAN.value}'*'{Colors.ENDC.value} for all.\n{Colors.BOLD.value}Separate multiple indices with a space.{Colors.ENDC.value}")
     user_input = input("Indices: ")

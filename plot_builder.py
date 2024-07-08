@@ -26,7 +26,9 @@ class PlotBuilder:
             self.gs = gridspec.GridSpec(2, 2)
         elif self.num_of_indices_to_show == 5 or self.num_of_indices_to_show == 6:
             self.gs = gridspec.GridSpec(2, 3)
-        self.plt.subplots_adjust(left=0.02, bottom=0.1, right=0.98, top=0.9, wspace=0.05, hspace=0.05)
+        elif self.num_of_indices_to_show == 7 or self.num_of_indices_to_show == 8:
+            self.gs = gridspec.GridSpec(3, 3)
+        self.plt.subplots_adjust(left=0.02, bottom=0.075, right=0.98, top=0.925, wspace=0.05, hspace=0.25)
 
     def create_subplot(self, row_index, col_index, index, index_type, index_label):
         colors = [(0, 'red'), (0.5, 'yellow'), (1, 'green')]
@@ -37,32 +39,30 @@ class PlotBuilder:
         img = self.subplots[index_type].imshow(index, cmap=custom_cmap)
         self.subplots[index_type].set_xticks([])
         self.subplots[index_type].set_yticks([])
-        self.subplots[index_type].set_title(f"{index_type} - {index_label}")
+        self.subplots[index_type].set_title(f"{index_type} - {index_label}", fontsize=10)
 
-        # flatten_index = np.array(index).flatten()
-        # flatten_index_len = len(flatten_index)
-        # flatten_index.sort()
+        flatten_index = np.array(index).flatten()
+        flatten_index_len = len(flatten_index)
+        flatten_index.sort()
 
         # median_index = 0
-        # if flatten_index_len % 2 != 0:
-        #     median = flatten_index[int((flatten_index_len + 1) / 2)]
-        #     median_index = int((flatten_index_len + 1) / 2)
-        # else:
-        #     median = (int(flatten_index[int(flatten_index_len / 2)]) + int(flatten_index[int(flatten_index_len / 2) + 1])) / 2
-        #     median_index = int(flatten_index_len / 2)
+        if flatten_index_len % 2 != 0:
+            median = flatten_index[int((flatten_index_len + 1) / 2)]
+            # median_index = int((flatten_index_len + 1) / 2)
+        else:
+            median = (int(flatten_index[int(flatten_index_len / 2)]) + int(flatten_index[int(flatten_index_len / 2) + 1])) / 2
+            # median_index = int(flatten_index_len / 2)
 
-        # sum = 0
-        # for value in flatten_index:
-        #     sum += value
+        sum = np.sum(flatten_index)
+        mean = sum / len(flatten_index)
         # mean_index = 0
-        # mean = sum / len(flatten_index)
         # for i, value in enumerate(flatten_index):
         #     if np.round(value) == np.round(mean):
         #         mean_index = i
         #         break
         
-        # # subplot.text(0, -0.025, f'Mean: {mean}', ha='left', transform=subplot.transAxes)
-        # # subplot.text(0.25, -0.025, f'Median: {median}', ha='left', transform=subplot.transAxes)
+        self.subplots[index_type].text(0, -0.06, f'Mean: {mean}', ha='left', transform=self.subplots[index_type].transAxes, fontsize=8)
+        self.subplots[index_type].text(0, -0.12, f'Median: {median}', ha='left', transform=self.subplots[index_type].transAxes, fontsize=8)
 
         # # test graph subplot
         # smol_arr = flatten_index[:]

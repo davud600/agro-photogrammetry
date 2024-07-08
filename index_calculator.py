@@ -16,6 +16,7 @@ class Index(Enum):
     BI = 'bi'
     IPVI = 'ipvi'
     SAVI = 'savi'
+    EVI = 'evi'
 
 AVAILABLE_INDICES = [index.value for index in Index]
 
@@ -123,5 +124,5 @@ class EVICalculator(IndexCalculator):
         C2 = 7.5
         G = 2.5
         L = 1
-        savi = G * ((self.nir_band - self.red_band) / (self.nir_band + C1 * self.red_band - C2 * self.blue_band + L))
-        return savi
+        evi = G * ((self.nir_band - self.red_band) / (self.nir_band + C1 * self.red_band - C2 * self.blue_band + L + 0.0001))
+        return evi
