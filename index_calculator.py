@@ -20,6 +20,7 @@ class Index(Enum):
 
 AVAILABLE_INDICES = [index.value for index in Index]
 
+
 class IndexCalculator:
     def calculate_index(self):
         raise NotImplementedError("Subclasses should implement this method")
@@ -125,4 +126,4 @@ class EVICalculator(IndexCalculator):
         G = 2.5
         L = 1
         evi = G * ((self.nir_band - self.red_band) / (self.nir_band + C1 * self.red_band - C2 * self.blue_band + L + 0.0001))
-        return evi
+        return self.normalize_and_return_index(evi)
