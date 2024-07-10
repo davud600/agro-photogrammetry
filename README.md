@@ -9,7 +9,7 @@ Python-based tool designed for agricultural data analysis using multispectral im
 Processes already aligned multispectral aerial images from different color bands to calculate various vegetation indices. These indices help in assessing crop health and are displayed using `matplotlib`.
 
 **Example Outputs:**
-![Vegetation Indices](https://github.com/davud600/agro-photogrammetry/tree/media/veg-ind-showcase.jpg?raw=true)
+![Vegetation Indices](https://github.com/davud600/agro-photogrammetry/main/media/veg-ind-showcase.jpg?raw=true)
 **_Example data set is from: [MicaSense RedEdge Sample Data](https://sample.micasense.com/)_**
 
 ### 2. Geospatial Image Alignment
@@ -17,7 +17,7 @@ Processes already aligned multispectral aerial images from different color bands
 This feature processes raw image files containing GPS metadata, aligns them based on their geospatial coordinates, and stitches them together.
 
 **Example Outputs:**
-![Geospatial Alignment](https://github.com/davud600/agro-photogrammetry/tree/media/geo-alg-showcase.jpg?raw=true)
+![Geospatial Alignment](https://github.com/davud600/agro-photogrammetry/main/media/geo-alg-showcase.jpg?raw=true)
 
 ## Installation
 
