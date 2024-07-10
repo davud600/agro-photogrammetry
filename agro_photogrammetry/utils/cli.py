@@ -21,6 +21,10 @@ class InvalidBandSelection(Exception):
         super().__init__(self.message)
 
 
+def print_error(error: str):
+    print(f"{Colors.FAIL.value}{error}{Colors.ENDC.value}")
+
+
 def get_bands_from_user():
     print(
         f"{Colors.HEADER.value}Enter bands to use{Colors.ENDC.value}\n{Colors.CYAN.value}{AVAILABLE_BANDS}{Colors.ENDC.value} or {Colors.CYAN.value}'*'{Colors.ENDC.value} for all.\n{Colors.BOLD.value}Separate multiple bands with a space.{Colors.ENDC.value}")

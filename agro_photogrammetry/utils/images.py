@@ -45,6 +45,9 @@ def load_metadata(path: str) -> dict:
 
 
 def get_images_in_directory(directory: str, extensions: list[str] = ['.dng', '.jpg', '.jpeg', '.png']) -> list[str]:
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f"Directory '{directory}' not found.")
+    
     images = []
     for file in os.listdir(directory):
         if file.lower().endswith(tuple(extensions)):

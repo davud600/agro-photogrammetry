@@ -1,4 +1,5 @@
 import numpy
+from utils.cli import Colors, print_error
 from constants import RESULTS_DIR, DATASET_DIR
 from utils.images import get_images_in_directory, load_metadata
 import cv2
@@ -31,9 +32,12 @@ class CreateStitchedMapException(GeoAlignerBaseException):
 
 class GeoAligner:
     def __init__(self, images_dir: str):
-        self.result_filename = images_dir.replace(f"{DATASET_DIR}/", "")
-        self.images = get_images_in_directory(images_dir)
-        self.image_data = self.get_image_data()
+        try:
+            self.result_filename = images_dir.replace(f"{DATASET_DIR}/", "")
+            self.images = get_images_in_directory(images_dir)
+            self.image_data = self.get_image_data()
+        except Exception as e:
+            raise GeoAlignerBaseException(e)
 
     def get_image_data(self) -> list:
         """Read images and return list."""
@@ -45,7 +49,7 @@ class GeoAligner:
                 try:
                     image = self.read_dng(image_path)
                 except ReadDngFileException as e:
-                    print(e.message)
+                    print_error(e)
                     continue
 
             if image is None:
@@ -102,15 +106,7 @@ class GeoAligner:
             cv2.imwrite(f"{results_dir}/{self.result_filename}.jpg",
                         stitched, [cv2.IMWRITE_JPEG_QUALITY, 100])
             print(
-                f"Stitching completed and saved as '{self.result_filename}.jpg'")
+                f"{Colors.GREEN.value}Stitching completed and saved as '{self.result_filename}.jpg'{Colors.ENDC.value}")
         else:
             raise CreateStitchedMapException(
                 f"Error during stitching: {status}")
-
-
-try:
-    geo_align = GeoAligner(f"{DATASET_DIR}/geotagged")
-    images = geo_align.align_and_return_images()
-    geo_align.create_stitched_map(images, RESULTS_DIR)
-except GeoAlignerBaseException as e:
-    print(e.message)
