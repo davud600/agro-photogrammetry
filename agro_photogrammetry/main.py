@@ -1,4 +1,5 @@
 import os
+from index_calculator import IndexCalculator
 from utils.cli import print_error
 from geo_aligner import GeoAligner, GeoAlignerBaseException
 from constants import DATASET_DIR, RESULTS_DIR, Bands, INDEX_CALCULATORS
@@ -48,7 +49,7 @@ def main():
         except InvalidIndexSelection as e:
             print(e)
 
-    index_calculators = []
+    index_calculators: list[IndexCalculator] = []
     for index_type in selected_indices:
         if index_type.upper() in INDEX_CALCULATORS:
             calculator_class, required_args = INDEX_CALCULATORS[index_type.upper()]
