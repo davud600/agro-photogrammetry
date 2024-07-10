@@ -47,7 +47,7 @@ This feature processes raw image files containing GPS metadata, aligns them base
 
 1. Place your aligned multispectral images in data/subdir (create subdir for each dataset).
 
-![Subdirectory Example]()
+![Subdirectory Example](https://raw.githubusercontent.com/davud600/agro-photogrammetry/main/media/subdir-showcase.jpg?raw=true)
 
 2. Run the main script, replace `dataset_subdir` with the name of your dataset subdirectory and `filename_prefix` with the prefix of the files (only supports .tif) inside the subdirectory. The files should follow the naming convention `prefix_1.tif`, `prefix_2.tif`, etc., where:
 
